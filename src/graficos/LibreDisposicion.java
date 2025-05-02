@@ -101,7 +101,7 @@ class EnColumnas implements LayoutManager{
 			x+=100;
 			if(contador%2==0) {
 				x=d/2;
-				y+=40;}
+				y+=40;}//cambio bonito
 		}
 	}
 	
