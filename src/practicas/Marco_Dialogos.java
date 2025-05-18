@@ -1,4 +1,5 @@
 package practicas;
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
@@ -51,6 +52,16 @@ public class Marco_Dialogos extends JFrame{
 		lamina_cuadricula.add(lamina_tipo);
 		lamina_cuadricula.add(lamina_tipo_mensaje);
 		lamina_cuadricula.add(lamina_mensaje);
+		lamina_cuadricula.add(lamina_tipo_opcion);
+		lamina_cuadricula.add(lamina_opciones);
+		lamina_cuadricula.add(lamina_entrada);
+		// construimos lalamina inferior
+		JPanel lamina_mostrar=new JPanel();
+		JButton boton_mostar=new JButton("Mostrar");
+		lamina_mostrar.add(boton_mostar);
+		add(lamina_mostrar,BorderLayout.SOUTH);
+		add(lamina_cuadricula, BorderLayout.CENTER);
+		
 		add(lamina_cuadricula);
 	}
 }
