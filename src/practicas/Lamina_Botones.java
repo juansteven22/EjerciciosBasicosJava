@@ -15,7 +15,7 @@ public class Lamina_Botones extends JPanel{
 	    grupo=new ButtonGroup();
 		for(int i=0; i<opciones.length;i++) {
 			JRadioButton bot=new JRadioButton(opciones[i]);
-			//bot.
+			bot.setActionCommand(opciones[i]);
 			add(bot);
 			grupo.add(bot);
 			bot.setSelected(i==0);

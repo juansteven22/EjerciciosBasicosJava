@@ -1,6 +1,8 @@
 package practicas;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 public class Marco_Dialogos extends JFrame{
@@ -57,11 +59,35 @@ public class Marco_Dialogos extends JFrame{
 		lamina_cuadricula.add(lamina_entrada);
 		// construimos lalamina inferior
 		JPanel lamina_mostrar=new JPanel();
-		JButton boton_mostar=new JButton("Mostrar");
-		lamina_mostrar.add(boton_mostar);
+		JButton boton_mostrar=new JButton("Mostrar");
+		boton_mostrar.addActionListener(new AccionMostrar());
+		lamina_mostrar.add(boton_mostrar);
 		add(lamina_mostrar,BorderLayout.SOUTH);
 		add(lamina_cuadricula, BorderLayout.CENTER);
 		
 		add(lamina_cuadricula);
 	}
+	
+	private class AccionMostrar implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			//System.out.println(lamina_tipo.dameSeleccion());
+			if(lamina_tipo.dameSeleccion().equals("Mensaje")) {
+				JOptionPane.showMessageDialog(Marco_Dialogos.this,"Mensaje","titulo",0);
+			}
+			else if(lamina_tipo.dameSeleccion().equals("Confirmar")) {
+				JOptionPane.showConfirmDialog(Marco_Dialogos.this,"Mensaje","titulo",0,0);
+			}
+			else if(lamina_tipo.dameSeleccion().equals("Entrada")) {
+				JOptionPane.showInputDialog(Marco_Dialogos.this,"Mensaje","titulo",0);
+			}
+			else if(lamina_tipo.dameSeleccion().equals("Opcion")) {
+				//JOptionPane.showConfirmDialog(Marco_Dialogos.this,"Mensaje","titulo",0,0);
+			}
+		}
+		
+	}
+	
 }
