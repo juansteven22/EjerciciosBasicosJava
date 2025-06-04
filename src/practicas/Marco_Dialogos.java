@@ -132,6 +132,40 @@ public class Marco_Dialogos extends JFrame{
 
 	}
 
+	// ----------------------INICIO Da opciones a la lamina7
+	public Object[] dameOpciones(Lamina_Botones lamina) {
+		String s=lamina.dameSeleccion();
+		if(s.equals("String[]")) {
+			return new String[] {
+					"Amarillo","Azul","Rojo"
+			};
+		}
+		else if(s.equals("Icon[]")) {
+			return new Object[] {
+					new ImageIcon("C:\\Users\\JuanStevenMontenegro\\Desktop\\bola_azul.gif"),
+					new ImageIcon("C:\\Users\\JuanStevenMontenegro\\Desktop\\bola_roja.gif"),
+					new ImageIcon("C:\\Users\\JuanStevenMontenegro\\Desktop\\bola_amarilla.gif")
+					
+					
+
+			};
+		}
+		else if(s.equals("Object[]")) {
+			return new Object[] {
+					cadenaMensaje,
+					iconoMensaje,
+					componenteMensaje,
+					objetoMensaje
+			};
+		}
+		else {
+			return null;
+		}
+		
+	}
+	// ----------------------FIN Da opciones a la lamina
+	
+	
 	//------- fin devuelve icono ------------------------
 	private class AccionMostrar implements ActionListener {
 
@@ -146,17 +180,31 @@ public class Marco_Dialogos extends JFrame{
 				JOptionPane.showConfirmDialog(Marco_Dialogos.this,dameMensaje(),"titulo",dameTipo(lamina_tipo_opcion),dameTipo(lamina_tipo_opcion));
 			}
 			else if(lamina_tipo.dameSeleccion().equals("Entrada")) {
-				JOptionPane.showInputDialog(Marco_Dialogos.this,dameMensaje(),"titulo",dameTipo(lamina_tipo_mensaje));
+			    if(lamina_entrada.dameSeleccion().equals("Campo de texto")) {
+			        JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "titulo", dameTipo(lamina_tipo_mensaje));
+			    }
+			    else {
+			        JOptionPane.showInputDialog(
+			            Marco_Dialogos.this,
+			            dameMensaje(),
+			            "titulo",
+			            dameTipo(lamina_tipo_mensaje),
+			            null, // Icono
+			            new String[] {"Amarillo", "Azul", "Rojo"},
+			            "Azul"
+			        );
+			    }
 			}
+
 			else if(lamina_tipo.dameSeleccion().equals("Opción")) {
 				JOptionPane.showOptionDialog(
 						Marco_Dialogos.this, 
 						dameMensaje(), 
 						"Titulo", 
-						 0,
+						 1,
 						 dameTipo(lamina_tipo_mensaje), 
 						 null, 
-						 null, 
+						 dameOpciones(lamina_opciones), 
 						 null
 						 );
 			}
